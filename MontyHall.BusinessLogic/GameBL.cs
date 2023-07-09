@@ -32,22 +32,6 @@ namespace MontyHall.BusinessLogic
             return GetGameCard(newGameId);
         }
 
-        public void GetResults(int gameId) 
-        {
-            using(DataAdapter dataAdapter = new DataAdapter())
-            {
-                var gameData = dataAdapter.GameDataGenericRepository.GetByValues(x=>x.GameId == gameId);
-
-                foreach(GameData data in gameData) 
-                {
-                    Random randomWinDoorNumber = new Random();
-                    data.WinDoorNumber = randomWinDoorNumber.Next(1, 4);
-                    dataAdapter.GameDataGenericRepository.Edit(data);
-                }
-                dataAdapter.Save();
-            }
-        }
-
         public List<GameCardModel> GetGameCards()
         {
             List<GameCardModel> results = new List<GameCardModel>();

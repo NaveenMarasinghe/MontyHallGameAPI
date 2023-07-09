@@ -26,14 +26,6 @@ namespace DMS.DEMO.TESTAPI.Controllers
             return _oGameBL.CreateGame(newGame);
         }
 
-        [HttpGet("{Num}")]
-        [ActionName("GetResults")]
-        public string GetResults([FromRoute] int Num)
-        {
-            _oGameBL.GetResults(Num);
-            return "You have send " + Num;
-        }
-
         [HttpGet("{GameId}")]
         [ActionName("RunGame")]
 
@@ -65,7 +57,5 @@ namespace DMS.DEMO.TESTAPI.Controllers
             List<GameData> results = _oGameBL.GetGameData(GameId);
             return results;
         }
-
-
     }
 }
